@@ -2,23 +2,30 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, Image, FlatList } from 'react-native';
+import DayListItem from './src/components/core/DayListItem';
 
 /* VARIABLES */
-const days = [1,2,3,4,5];
+const days = [...Array(24)].map((val,index) => index+1); // Length of the ARRAY
 
 export default function App() {
   return (
     <View style={styles.container}>
       <FlatList
         data={days}
+
+        /* As the new container is the FlatList, we should assign a new propety to change the gap betwwen the elements */
+        contentContainerStyle={styles.content}
+
+        /* We can change the number of colums we can have in he screen */
+        numColumns={2}
+
+        /* To properly give gaps between the columns */
+        columnWrapperStyle={styles.column}
+
         renderItem={({item})=>(
-          <View style={styles.box}>
-            <Text style={styles.text}>{item}</Text>
-          </View>
+          <DayListItem day={item}/>
         )}
       />
-
-      
 
       <StatusBar style="auto" />
     </View>
@@ -28,27 +35,15 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    gap: 10
+    padding:10
   },
 
-  box:{
-    backgroundColor:'#F9EDE3',
-    width: 250,
-    height: 250,
-
-    /* ALIGN */
-    justifyContent: 'center',
-    alignItems: 'center',
-
-    /* BORDER */
-    boderColor: '#9b4521',
-    borderRadius: 30,
-    borderWidth:StyleSheet.hairlineWidth,
+  content:{
+    gap: 10,
   },
 
-  text:{
-    fontSize: 50,
-    color: '#9b4521'
+  column:{
+    gap:10
   }
 });
 
