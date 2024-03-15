@@ -1,10 +1,10 @@
 /* IMPORTS */
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, FlatList } from 'react-native';
 
 /* VARIABLES */
-const days = [1,2,3];
+const days = [1,2,3,4,5];
 
 export default function App() {
   return (
@@ -22,13 +22,22 @@ export default function App() {
       />*/
       }
 
-        <View style={styles.box}>
-          <Text style={styles.text}>1</Text>
-        </View>
+      <FlatList
+        data={days}
+        renderItem={({item})=>(
+          <View style={styles.box}>
+            <Text style={styles.text}>{item}</Text>
+          </View>
+        )}
+        //horizontal
+      />
 
-        <View style={styles.box}>
-          <Text style={styles.text}>2</Text>
+
+      {/*days.map((day)=>(
+        <View style={styles.box} key={day}>
+          <Text style={styles.text}>{day}</Text>
         </View>
+      ))*/}
 
       <StatusBar style="auto" />
     </View>
@@ -40,7 +49,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    gap: 20
+    gap: 10
   },
 
   box:{
