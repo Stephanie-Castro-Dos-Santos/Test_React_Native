@@ -4,16 +4,27 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, FlatList } from 'react-native';
 import DayListItem from './src/components/core/DayListItem';
 import { useFonts, Inter_900Black } from '@expo-google-fonts/inter';
+import * as SplashScreen from 'expo-splash-screen';
+import { useEffect } from 'react';
 
+SplashScreen.preventAutoHideAsync();
 /* VARIABLES */
 const days = [...Array(24)].map((val,index) => index+1); // Length of the ARRAY
 
 export default function App() {
   /* How to use fonts from Google Fonts */
-  const [fontsLoaded, error] = useFonts({
+  const [fontsLoaded, fontError] = useFonts({
     /* Name of the font: value of the font */
     Inter:Inter_900Black,
   });
+
+  
+  useEffect(() => {
+    if(fontsLoaded || fontError){
+      SplashScreen.hideAsync();
+    }
+    
+  }, [fontsLoaded, fontError]);
 
   return (
     <View style={styles.container}>
