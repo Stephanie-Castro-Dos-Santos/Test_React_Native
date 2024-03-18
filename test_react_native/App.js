@@ -3,11 +3,18 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, Image, FlatList } from 'react-native';
 import DayListItem from './src/components/core/DayListItem';
+import { useFonts, Inter_900Black } from '@expo-google-fonts/inter';
 
 /* VARIABLES */
 const days = [...Array(24)].map((val,index) => index+1); // Length of the ARRAY
 
 export default function App() {
+  /* How to use fonts from Google Fonts */
+  const [fontsLoaded, error] = useFonts({
+    /* Name of the font: value of the font */
+    Inter:Inter_900Black,
+  });
+
   return (
     <View style={styles.container}>
       <FlatList
