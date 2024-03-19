@@ -29,6 +29,6 @@ const styles = StyleSheet.create({
     text:{
       fontSize: 45,
       color: '#9b4521',
-      fontFamily: 'Inter'
+      fontFamily: 'Fira_Sans'
     }
   });

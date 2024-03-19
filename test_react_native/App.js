@@ -4,10 +4,13 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, FlatList } from 'react-native';
 import DayListItem from './src/components/core/DayListItem';
 import { useFonts, Inter_900Black } from '@expo-google-fonts/inter';
+import {FiraSansExtraCondensed_500Medium } from '@expo-google-fonts/fira-sans-extra-condensed';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect, useState } from 'react';
 
+/* Used when the fonts are not loaded yet */
 SplashScreen.preventAutoHideAsync();
+
 /* VARIABLES */
 const days = [...Array(24)].map((val,index) => index+1); // Length of the ARRAY
 
@@ -16,11 +19,13 @@ export default function App() {
   const [fontsLoaded, fontError] = useFonts({
     /* Name of the font: value of the font */
     Inter:Inter_900Black,
+    Fira_Sans: FiraSansExtraCondensed_500Medium
   });
 
   /* To prevent the flashes of the font when it's loading */
   useEffect(() => {
-    if(fontsLoaded || fontError){
+    if(fontsLoaded || fontError){ // When they are true
+      /* We hide the splash screens */
       SplashScreen.hideAsync();
     }
     
