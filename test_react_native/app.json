@@ -14,6 +14,9 @@
 
     "web": {
       "bundler": "metro"
+    },
+    "experiments": {
+      "tsconfigPaths": true
     }
   }
 }
