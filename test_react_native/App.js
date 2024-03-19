@@ -5,7 +5,7 @@ import { StyleSheet, Text, View, Image, FlatList } from 'react-native';
 import DayListItem from './src/components/core/DayListItem';
 import { useFonts, Inter_900Black } from '@expo-google-fonts/inter';
 import * as SplashScreen from 'expo-splash-screen';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 SplashScreen.preventAutoHideAsync();
 /* VARIABLES */
@@ -18,13 +18,17 @@ export default function App() {
     Inter:Inter_900Black,
   });
 
-  
+  /* To prevent the flashes of the font when it's loading */
   useEffect(() => {
     if(fontsLoaded || fontError){
       SplashScreen.hideAsync();
     }
     
   }, [fontsLoaded, fontError]);
+
+  if(!fontsLoaded && !fontError){
+    return null;
+  }
 
   return (
     <View style={styles.container}>
@@ -50,6 +54,7 @@ export default function App() {
   );
 }
 
+/* Styles for the component */
 const styles = StyleSheet.create({
   container: {
     flex: 1,
