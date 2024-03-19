@@ -3,6 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, Image, FlatList } from 'react-native';
 import DayListItem from '../../src/components/core/DayListItem';
+import { SplashScreen } from 'expo-router';
 
 /* Used when the fonts are not loaded yet */
 SplashScreen.preventAutoHideAsync();
