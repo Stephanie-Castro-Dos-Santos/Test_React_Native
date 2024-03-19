@@ -2,12 +2,18 @@
   "expo": {
     "name": "test_react_native",
     "slug": "test_react_native",
+    "scheme": "test_react_native",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
     ],
     "plugins": [
-      "expo-font"
-    ]
+      "expo-font",
+      "expo-router"
+    ],
+
+    "web": {
+      "bundler": "metro"
+    }
   }
 }
