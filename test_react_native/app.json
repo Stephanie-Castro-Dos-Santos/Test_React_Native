@@ -9,11 +9,25 @@
     ],
     "plugins": [
       "expo-font",
-      "expo-router"
+      "expo-router",
+      [
+        "@react-native-voice/voice",
+        {
+          "microphonePermission": "Allow Voice to Text Tutorial to access the microphone",
+          "speechRecognitionPermission": "Allow Voice to Text Tutorial to securely recognize user speech"
+        }
+      ]
     ],
-
     "web": {
       "bundler": "metro"
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "097520cc-5c7a-4dd6-b36c-ae959a2fdc67"
+      }
     }
   }
 }
